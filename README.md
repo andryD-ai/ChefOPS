@@ -14,36 +14,39 @@ This is a simple detecting and tracking Food web app in dispenser area in kitche
 ## System model
 
 ### Web Diagram
-[User Browser]
-|
-v
-[Frontend: HTML + JS]
-|
-|-- fetch('/video_info') ---> [Flask Backend: /video_info]
-|-- fetch('/load_video') ---> [Flask Backend: /load_video]
-|-- fetch('/get_frame') ---> [Flask Backend: /get_frame]
-|-- fetch('/submit_button') --> [Flask Backend: /submit_button]
-|
-v
-[Flask Backend]
-|
-|-- Starts Thread --> [Video Processing Thread]
-| |
-| |-- OpenCV reads frames
-| |-- YOLO/MobileNet Detection
-| |-- Puts into Frame Queue
-|el]
-(Object Detection)
-|
-v
-[Bounding Boxes]
-|
-v
-[MobileNetV3 Model]
-(Optional Classification / Refinement)
-|
-v
-[Annotated Frame with Detections]
+
++-------------------------+       HTTP/JSON        +------------------------+
+|     Web Browser (JS)    | <--------------------> |    Flask Backend API    |
+|-------------------------|                        |------------------------|
+| - Select video          |   /load_video (POST)   | - Starts processing    |
+| - View annotated frame  |   /get_frame (POST)    | - Detect objects       |
+| - Seek slider           |   /video_info (GET)    | - Queue frames         |
+| - Submit feedback       |   /submit_button (POST)| - Save feedback/images |
++-------------------------+                        +------------------------+
+                                                          |
+                                                          v
+                                                 +---------------------+
+                                                 |  Frame Producer     |
+                                                 |  (Threaded, OpenCV) |
+                                                 +---------------------+
+                                                          |
+                                                          v
+                                                +----------------------+
+                                                |  Object Detection    |
+                                                |  YOLO + MobileNetV3  |
+                                                +----------------------+
+                                                          |
+                                                          v
+                                                +----------------------+
+                                                | Frame Queue (Buffer) |
+                                                +----------------------+
+                                                          |
+                                                          v
+                                                +----------------------+
+                                                |  Feedback Saver      |
+                                                |  (Image & .txt file) |
+                                                +----------------------+
+
 
 
 ## System configuration
