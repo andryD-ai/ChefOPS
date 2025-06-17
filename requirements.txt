@@ -1,0 +1,26 @@
+# YOLO
+ultralytics
+
+# Deep learning
+torch>=2.0.1
+torchvision>=0.15.2
+transformers
+torch>=1.7
+dataclasses
+supervision==0.1.0
+
+# web
+Flask
+flask_cors
+fastapi 
+
+# another
+Pillow>=9.5.0
+numpy>=1.24.3
+opencv-python
+opencv-contrib-python-headless
+opencv-python-headless
+
+
+# Other
+tqdm

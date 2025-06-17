@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    image: chefops-image
+    container_name: chefops-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/project
+    environment:
+      - PYTHONPATH=/project
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    runtime: nvidia

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Video Player</title>
+    <script src="/static/script.js"></script>
+</head>
+<body>
+    <div style="display:flex; height: 90vh;">
+        <!-- LEFT: Video List -->
+        <div style="width: 20%;">
+            <h3 id="vlist" >Video List</h3>
+            <ul id="videoList">
+                {% for video in videos %}
+                    <li><button onclick="selectVideo('{{ video }}')">{{ video }}</button></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- CENTER: Video Player -->
+        <div style="width: 80%;">
+            <h3>Video Player</h3>
+            <img id="videoFrame" width="640" height="480">
+            <br>
+            <input type="range" id="timeline" style="width: 640px;" min="0" max="70000" value="0" step="1" oninput="previewSeek()" onchange="commitSeek()">
+            <div>Time: <span id="currentTime">00:00:00</span></div>
+            <!-- Controls -->
+            <div style="margin-top:10px;">
+                <button onclick="togglePlay()">Play/Pause</button>
+                <br>
+                <h3>Error description</h3>
+                <input type="text" id="errDescribe" style="width: 300px; height: 20px;" placeholder="Describe the error...">
+                <button onclick="submitErr()">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
