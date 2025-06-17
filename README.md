@@ -2,6 +2,8 @@
 
 This is a simple detecting and tracking Food web app in dispenser area in kitchen of a restaurant.
 
+See a demo of the web app and how to use it here: [Demo](https://youtu.be/beFgcKEdK74)
+
 ![Detection and tracking in restaurants](./img_readme/detect1.jpeg)
 
 ### 🔧 Components
