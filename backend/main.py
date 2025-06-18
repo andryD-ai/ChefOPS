@@ -69,10 +69,10 @@ def frame_producer(videopath, start_frame=0):
 # Serve main page
 @app.route('/')
 def index():
-    # with open('/project/backend/video_list.txt', 'r') as f:
-    #     videos = [line.strip() for line in f.readlines()]
+    with open('/project/backend/video_list.txt', 'r') as f:
+        videos = [line.strip() for line in f.readlines()]
     # Can edit to show only some video
-    videos = ['video_CH05.mp4']
+    # videos = ['video_CH05.mp4']
 
     return render_template('chefops.html', videos=videos)
 
