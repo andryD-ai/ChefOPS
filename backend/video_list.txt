@@ -1,2 +1,6 @@
+# Please delete all and add your video name here.
+# This is a trick to hide some videos from users.
+
+# Example of a normal file:
 video_CH05.mp4
 video_test.mp4

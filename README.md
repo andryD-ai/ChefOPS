@@ -97,7 +97,7 @@ If running on CPU only, you may encounter lag problems.
 
 Since my GPU is not powerful enough, and preparing for training the model with large data, I uploaded the training data to drive and used colab's free GPU to train the model at [Notebook](https://colab.research.google.com/drive/1BQBtCAfZXa7VZ3tKhATG5o_w6OgUP3YL?usp=drive_link).
 
-I then downloaded the trained models and saved them in **./backend/models/**
+I then downloaded the trained models and saved them in **./backend/models/trainedmodels**
 You can also download the models at:
 1. [yoloDetect_x.pt](https://drive.google.com/file/d/1boh8GyscJqu-oZ2oxUlu5as24CEPiiYX/view?usp=sharing)
 2. [mobilenetV3Config.pt](https://drive.google.com/file/d/10rYp7slU9RzE9UrXWze6Cu2ThsNaHwbj/view?usp=drive_link)
